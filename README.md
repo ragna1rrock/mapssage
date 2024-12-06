@@ -10,5 +10,3 @@
 
 ## 🤖 Tech
 React, Typescript, Zustand, Spring Boot
-
-# mapssage

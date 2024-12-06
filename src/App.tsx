@@ -1,13 +1,6 @@
 import React from 'react';
+import Routers from '@/routers/Routers';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Main
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => <Routers />;
 
 export default App;
