@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
+import Map from '@/components/Map.tsx';
 
 const Gnb = () => {
     return (
@@ -8,9 +9,10 @@ const Gnb = () => {
                 <Link to='/about'>about</Link>
                 <Link to='/login'>login</Link>
             </nav>
+            <Map />
             <Outlet />
         </>
-    )
+    );
 };
 
 export default Gnb;
