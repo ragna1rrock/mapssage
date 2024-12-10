@@ -1,6 +1,7 @@
-import MapWrapperTag from '@/util/Tags';
 import { useEffect, useRef } from 'react';
-import useMap from '@/hooks/useMap.ts';
+import useMap from '@/hooks/useMap';
+import {MapWrapperTag} from '@/util/createTags';
+
 
 declare global {
     interface Window {
