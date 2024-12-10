@@ -1,10 +1,8 @@
+import Map from '@/components/Map.tsx';
+
 const Home = () => {
     return (
-        <>
-            <div>
-                home
-            </div>
-        </>
+        <Map />
     );
 };
 
