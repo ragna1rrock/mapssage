@@ -2,16 +2,18 @@ import { RefObject, useState } from 'react';
 
 const useMap = () => {
     const { kakao } = window;
+    // @ts-ignore
     const [kakaoMap, setKakaoMap] = useState(null);
 
     const createMap = (mapRef: RefObject<HTMLDivElement>) => {
-        const container = mapRef.current;
-        const options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3,
-        };
-
-        setKakaoMap(new kakao.maps.Map(container, options));
+        console.log(mapRef)
+        // const container = mapRef.current;
+        // const options = {
+        //     center: new kakao.maps.LatLng(33.450701, 126.570667),
+        //     level: 3,
+        // };
+        //
+        // setKakaoMap(new kakao.maps.Map(container, options));
     };
 
     const createMaker = () => {

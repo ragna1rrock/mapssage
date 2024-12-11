@@ -2,14 +2,14 @@ import {
     // Link,
     Outlet,
 } from 'react-router-dom';
-import { HeaderTag, ButtonTag, BergerMenuTag } from '@/util/createTags';
+import { HeaderTag, ButtonTag, FontAwesomeTag } from '@/libs/util/createTags';
 
 const Gnb = () => {
     return (
         <>
             <HeaderTag>
                 <ButtonTag>
-                    <BergerMenuTag className="fa-solid fa-bars" />
+                    <FontAwesomeTag $fontSize={30} className="fa-solid fa-bars" />
                 </ButtonTag>
                 {/*<Link to='/'>home</Link>*/}
                 {/*<Link to='/about'>about</Link>*/}
