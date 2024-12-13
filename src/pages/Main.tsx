@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 import useMap from '@/hooks/main/useMap';
-import {
-    MapWrapperTag,
-    MapTag,
-    SendButtonTag,
-    MessageInputWrapTag,
-    MessageInputTag,
-} from '@/libs/util/createTags';
-import sendMessage from '@/hooks/main/sendMessage.ts';
+import regMessage from '@/hooks/main/sendMessage.ts';
+
+import Container from '@/styles/component/Container.ts';
+import MapWrap from '@/styles/wrap/MapWrap.ts';
+import MessageWrap from '@/styles/message/MessageWrap.ts';
+import MessageInput from '@/styles/message/MessageInput.ts';
+import MessageButton from '@/styles/message/MessageButton.ts';
+import BlackSmallText from '@/styles/text/BlackSmallText.ts';
 
 declare global {
     interface Window {
@@ -22,15 +22,15 @@ const Main = () => {
     useEffect(() => createMap(mapRef), []);
 
     return (
-        <MapWrapperTag>
-            <MapTag ref={mapRef}>MAP</MapTag>
-            <MessageInputWrapTag>
-                <MessageInputTag />
-                <SendButtonTag onClick={sendMessage}>
-                    보내기
-                </SendButtonTag>
-            </MessageInputWrapTag>
-        </MapWrapperTag>
+        <Container>
+            <MapWrap ref={mapRef}></MapWrap>
+            <MessageWrap>
+                <MessageInput placeholder="메세지를 입력해 주세요." />
+                <MessageButton onClick={regMessage}>
+                    <BlackSmallText>보내기</BlackSmallText>
+                </MessageButton>
+            </MessageWrap>
+        </Container>
     );
 };
 export default Main;

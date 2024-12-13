@@ -21,24 +21,18 @@ module.exports = {
                 test: /\.(ts|tsx)?$/,
                 use: ['esbuild-loader'],
                 exclude: '/node_modules/',
-            }, {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            }, {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: 'assets/[contenthash].[ext]',
-                },
-            },{
-                test: /\.s[ac]ss$/i,
+            },
+            {
+                test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000, // 10,000Byte 이상인 경우 file-loader
+                            fallback: 'file-loader',
+                            name: 'image/[name].[ext]',
+                        },
+                    },
                 ],
             },
         ],

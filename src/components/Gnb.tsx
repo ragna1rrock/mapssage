@@ -2,19 +2,18 @@ import {
     // Link,
     Outlet,
 } from 'react-router-dom';
-import { HeaderTag, ButtonTag, FontAwesomeTag } from '@/libs/util/createTags';
+import Header from '@/styles/component/Header.ts';
+import FontAwesome from '@/styles/component/FontAwesomeTag.ts';
+import MenuButton from '@/styles/button/MenuButton.ts';
 
 const Gnb = () => {
     return (
         <>
-            <HeaderTag>
-                <ButtonTag>
-                    <FontAwesomeTag $fontSize={30} className="fa-solid fa-bars" />
-                </ButtonTag>
-                {/*<Link to='/'>home</Link>*/}
-                {/*<Link to='/about'>about</Link>*/}
-                {/*<Link to='/login'>login</Link>*/}
-            </HeaderTag>
+            <Header>
+                <MenuButton>
+                    <FontAwesome className="fa-solid fa-bars" />
+                </MenuButton>
+            </Header>
             <Outlet />
         </>
     );
