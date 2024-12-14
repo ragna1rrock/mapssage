@@ -2,45 +2,46 @@ import { RefObject, useState } from 'react';
 
 const useMap = () => {
     const { kakao } = window;
-    // @ts-ignore
     const [kakaoMap, setKakaoMap] = useState(null);
+    const [kakaoMapLatLng, setKakaoMapLatLng] = useState(null);
 
     const createMap = (mapRef: RefObject<HTMLDivElement>) => {
+        const run = (lat: number, lon: number) => {
+            const latLng = new kakao.maps.LatLng(lat, lon);
+            setKakaoMap(
+                new kakao.maps.Map(container, {
+                    center: latLng,
+                    level: 3,
+                }),
+            );
+            setKakaoMapLatLng(latLng);
+        };
+
         const container = mapRef.current;
-
-        // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
         if (navigator.geolocation) {
-
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(function(position) {
-
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude; // 경도
-                console.log(lat, lon)
-
-                // const options = {
-                //     center: new kakao.maps.LatLng(lat, lon),
-                //     level: 3,
-                // };
-                //
-                // setKakaoMap(new kakao.maps.Map(container, options));
+            navigator.geolocation.getCurrentPosition(function (position) {
+                run(position.coords.latitude, position.coords.longitude);
             });
-
-        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-            const locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-            console.log(locPosition)
+        } else {
+            run(33.450701, 126.570667);
         }
     };
 
-    const createMessage = () => {
-        const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+    const createMessage = (message: string) => {
+        const content = `
+        <div style="position: relative;background: #fff;padding: 10px 12px">
+          <span style="font-weight: 600;color: #000;text-shadow: 1px 1px 2px black;">${message}</span>
+          <i style="position:absolute;left: 10px;top: calc(100% - 2px);clip-path: polygon(25% 0, 100% 0, 0% 100%);width: 30px;height: 20px;background: #fff"></i>
+        </div>
+        `
 
-        const marker = new kakao.maps.Marker({
-            position: markerPosition,
+        const messageMarker = new kakao.maps.CustomOverlay({
+            position: kakaoMapLatLng,
+            content: content,
+            xAnchor: 0.3,
+            yAnchor: 0.91
         });
-
-        marker.setMap(kakaoMap);
+        messageMarker.setMap(kakaoMap);
     };
 
     const useKakaoMap = () => kakaoMap;
