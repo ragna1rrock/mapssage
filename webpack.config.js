@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    mode: process.env.MODE || 'production', // 기본값 'production' 설정
+    mode: process.env.MODE || 'production',
     entry: './src/Index.tsx',
     resolve: {
         alias: {
@@ -18,7 +18,7 @@ module.exports = {
             {
                 test: /\.(ts|tsx)?$/,
                 use: ['esbuild-loader'],
-                exclude: /node_modules/, // 정규식 수정
+                exclude: /node_modules/,
             },
             {
                 test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
@@ -37,13 +37,14 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '/build'),
-        filename: 'bundle.[fullhash].js', // [hash] → [fullhash] 변경
-        clean: true, // 빌드 시 기존 파일 정리
+        filename: 'js/[name].[chunkhash].js', // 각 청크별로 다른 파일명 적용
+        clean: true,
     },
     optimization: {
         splitChunks: {
-            chunks: 'all', // 코드 스플리팅 활성화
+            chunks: 'all',
         },
+        runtimeChunk: 'single', // 런타임 코드 분리
     },
     plugins: [
         new ForkTsCheckerWebpackPlugin(),
@@ -51,13 +52,13 @@ module.exports = {
             template: 'public/index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash].css', // CSS 파일도 캐싱 가능하게 변경
+            filename: 'css/[name].[contenthash].css',
         }),
         new webpack.EnvironmentPlugin(['MODE', 'PORT']),
     ],
     devServer: {
         host: 'localhost',
-        port: process.env.PORT || 3000, // 기본값 추가
+        port: process.env.PORT || 3000,
         open: true,
         historyApiFallback: true,
         hot: true,
