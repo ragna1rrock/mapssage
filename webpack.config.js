@@ -6,7 +6,7 @@ const path = require('path');
 
 module.exports = {
     mode: process.env.MODE,
-    entry: './src/index.tsx',
+    entry: './src/Index.tsx',
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src/'),
