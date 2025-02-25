@@ -5,10 +5,11 @@ const MessageButton = styled.button`
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 0px;
+    border-radius: 0;
+    padding: 0 4px;
     border: 3px #000 solid;
+    white-space: nowrap;
+    box-sizing: border-box;
 
     &:hover {
         background-color: #f5f5f5;

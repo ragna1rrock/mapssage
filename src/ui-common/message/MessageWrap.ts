@@ -4,12 +4,13 @@ const MessageWrap = styled.div`
     position: absolute;
     bottom: 20px;
     z-index: 100;
-    display: grid;
+    display: flex;
+    justify-content: center;
     gap: 10px;
-    grid-template-columns: 1fr auto;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 20px;
     box-sizing: border-box;
+    overflow: hidden;
 `;
 
 export default MessageWrap;

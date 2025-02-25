@@ -8,7 +8,15 @@ import Main from '@/pages/Main.tsx';
 import Login from '@/pages/Login.tsx';
 const Routers: React.FC = () => (
     <BrowserRouter>
-        <Global styles={css`${emotionNormalize}`} />
+        <Global styles={css`
+            ${emotionNormalize}
+            :root {
+                --vh: 100%;
+            }
+            * {
+                box-sizing: border-box;
+            }
+        `} />
         <Routes>
             <Route element={<Gnb />}>
                 <Route path="/" element={<Main />} />

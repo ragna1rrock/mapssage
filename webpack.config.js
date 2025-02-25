@@ -7,6 +7,14 @@ const path = require('path');
 module.exports = {
     mode: process.env.MODE || 'production',
     entry: './src/Index.tsx',
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: false, // 자동으로 고유 이름 생성
+        },
+    },
+    mode: process.env.MODE,
+    entry: './src/index.tsx',
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src/'),
@@ -18,7 +26,7 @@ module.exports = {
             {
                 test: /\.(ts|tsx)?$/,
                 use: ['esbuild-loader'],
-                exclude: /node_modules/,
+                exclude: '/node_modules/',
             },
             {
                 test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
@@ -58,7 +66,7 @@ module.exports = {
     ],
     devServer: {
         host: 'localhost',
-        port: process.env.PORT || 3000,
+        port: process.env.PORT,
         open: true,
         historyApiFallback: true,
         hot: true,

@@ -2,9 +2,9 @@ import {
     // Link,
     Outlet,
 } from 'react-router-dom';
-import Header from '@/styles/component/Header.ts';
-import FontAwesome from '@/styles/component/FontAwesomeTag.ts';
-import MenuButton from '@/styles/button/MenuButton.ts';
+import Header from '@/ui-common/component/Header.ts';
+import FontAwesome from '@/ui-common/component/FontAwesomeTag.ts';
+import MenuButton from '@/ui-common/button/MenuButton.ts';
 
 const Gnb = () => {
     return (
