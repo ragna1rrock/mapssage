@@ -5,16 +5,8 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    mode: process.env.MODE || 'production',
-    entry: './src/Index.tsx',
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            name: false, // 자동으로 고유 이름 생성
-        },
-    },
     mode: process.env.MODE,
-    entry: './src/index.tsx',
+    entry: './src/Index.tsx',
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src/'),

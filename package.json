@@ -2,7 +2,7 @@
   "name": "mapssage",
   "version": "1.0.0",
   "description": "## 🤜🤛 Team 🔥 1rrock, FRONT_END",
-  "main": "index.js",
+  "main": "Index.js",
   "scripts": {
     "start": "dotenv -e .env webpack-dev-server --progress",
     "build": "dotenv -e .env.production webpack --progress",
