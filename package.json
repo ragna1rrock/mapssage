@@ -53,5 +53,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
-  "homepage": "http://3.25.230.126/mapssage"
+  "homepage": "/mapssage"
 }
