@@ -7,7 +7,7 @@ import Gnb from '@/components/Gnb';
 import Main from '@/pages/Main.tsx';
 import Login from '@/pages/Login.tsx';
 const Routers: React.FC = () => (
-    <BrowserRouter basename="/mapssage">
+    <BrowserRouter basename="/">
         <Global styles={css`
             ${emotionNormalize}
             :root {
